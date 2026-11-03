@@ -31,6 +31,14 @@
 $ npm install
 ```
 
+## Environment Variables
+
+Create a `.env` file at the root of the project with the following:
+
+```env
+DATABASE_URL="postgresql://postgres:your_password@localhost:5432/market_pulse?schema=public"
+```
+
 ## Compile and run the project
 
 ```bash
