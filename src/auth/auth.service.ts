@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import * as bcrypt from 'bcrypt';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { JwtService } from '@nestjs/jwt';
 import { User } from '../users/entities/user.entity.ts';
 
 @Injectable()
@@ -9,6 +10,7 @@ export class AuthService {
   constructor(
     @InjectRepository(User)
     private usersRepository: Repository<User>,
+    private jwtService: JwtService,
   ) {}
 
   async createUser(email: string, password: string): Promise<User> {
@@ -27,5 +29,10 @@ export class AuthService {
       return user;
     }
     return null;
+  }
+
+  async generateToken(user: User): Promise<string> {
+    const payload = { id: user.id, email: user.email };
+    return this.jwtService.sign(payload);
   }
 }

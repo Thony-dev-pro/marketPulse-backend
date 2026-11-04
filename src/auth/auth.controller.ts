@@ -18,7 +18,9 @@ export class AuthController {
       if (!user) {
         throw new InvalidCredentialsException();
       }
-      return user;
+      const token = await this.authService.generateToken(user);
+      const { password: _, ...userWithoutPassword } = user;
+      return { user: userWithoutPassword, token };
     } catch (error: unknown) {
       if (error instanceof InvalidCredentialsException) {
         throw error;
