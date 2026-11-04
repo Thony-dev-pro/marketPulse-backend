@@ -16,6 +16,9 @@
     "rootDir": ".",
     "incremental": true,
     "skipLibCheck": true,
+    "allowImportingTsExtensions": true,
+    "rewriteRelativeImportExtensions": true,
+    
     "strict": true,
     "strictPropertyInitialization": false,
     "types": ["vitest/globals", "node"]
