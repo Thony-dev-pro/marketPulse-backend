@@ -20,4 +20,12 @@ export class AuthService {
     });
     return await this.usersRepository.save(user);
   }
+
+  async login(email: string, password: string): Promise<User | null> {
+    const user = await this.usersRepository.findOne({ where: { email } });
+    if (user && await bcrypt.compare(password, user.password)) {
+      return user;
+    }
+    return null;
+  }
 }
