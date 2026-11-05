@@ -8,6 +8,7 @@ Create a `.env` file at the root of the project with the following:
 DATABASE_URL="postgresql://postgres:your_password@localhost:5432/market_pulse?schema=public"
 JWT_SECRET="your_jwt_secret"
 JWT_EXPIRES_IN="15m"
+CORS_ORIGIN="http://localhost:4200"
 ```
 
 ## Project setup
