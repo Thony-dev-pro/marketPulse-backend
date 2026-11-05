@@ -1,4 +1,5 @@
-import { Controller, Post, Body, HttpException, HttpStatus } from '@nestjs/common';
+import { Controller, Post, Body, HttpException, HttpStatus, Res } from '@nestjs/common';
+import type { Response } from 'express';
 import { AuthService } from './auth.service.ts';
 import { InvalidCredentialsException } from '../common/exceptions/invalid-credentials.exception.ts';
 
@@ -12,7 +13,7 @@ export class AuthController {
   }
 
   @Post('login')
-  async login(@Body('email') email: string, @Body('password') password: string) {
+  async login(@Body('email') email: string, @Body('password') password: string, @Res() res: Response) {
     try {
       const user = await this.authService.login(email, password);
       if (!user) {
@@ -20,7 +21,12 @@ export class AuthController {
       }
       const token = await this.authService.generateToken(user);
       const { password: _, ...userWithoutPassword } = user;
-      return { user: userWithoutPassword, token };
+      res.cookie('jwt', token, {
+        httpOnly: true,
+        secure: false,
+        maxAge: 15 * 60 * 1000,
+      });
+      return res.json({ user: userWithoutPassword });
     } catch (error: unknown) {
       if (error instanceof InvalidCredentialsException) {
         throw error;
