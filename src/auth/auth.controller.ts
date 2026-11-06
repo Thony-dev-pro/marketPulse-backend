@@ -24,9 +24,9 @@ export class AuthController {
       res.cookie('jwt', token, {
         httpOnly: true,
         secure: false,
-        maxAge: 15 * 60 * 1000,
+        maxAge: 60 * 60 * 1000,
       });
-      return res.json({ user: userWithoutPassword });
+      return res.json({ user: userWithoutPassword, token });
     } catch (error: unknown) {
       if (error instanceof InvalidCredentialsException) {
         throw error;

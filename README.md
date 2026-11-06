@@ -74,10 +74,34 @@ $ npm run start:prod
 }
 ```
 
-**Error Response (401):**
+### Update user email
+
+`PATCH /users/email`
+
+**Headers:**
+```
+Authorization: Bearer <your_token>
+```
+
+**Body:**
 ```json
 {
-  "statusCode": 401,
-  "message": "Invalid credentials"
+  "email": "new_email@example.com"
+}
+```
+
+**Response:**
+```json
+{
+  "id": 1,
+  "email": "new_email@example.com"
+}
+```
+
+**Error Response (404):**
+```json
+{
+  "statusCode": 404,
+  "message": "User not found"
 }
 ```
