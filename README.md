@@ -105,3 +105,25 @@ Authorization: Bearer <your_token>
   "message": "User not found"
 }
 ```
+
+### Get all products
+
+`GET /products`
+
+**Response:**
+```json
+[
+  {
+    "id": 1,
+    "name": "Product name",
+    "category_id": 1,
+    "description": "Product description",
+    "unit": "kg",
+    "status": 1,
+    "category": {
+      "id": 1,
+      "name": "Category name"
+    }
+  }
+]
+```
