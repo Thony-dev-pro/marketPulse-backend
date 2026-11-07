@@ -78,9 +78,9 @@ $ npm run start:prod
 
 `PATCH /users/email`
 
-**Headers:**
+**Cookie:**
 ```
-Authorization: Bearer <your_token>
+jwt=<your_token>
 ```
 
 **Body:**
@@ -109,6 +109,11 @@ Authorization: Bearer <your_token>
 ### Get all products
 
 `GET /products`
+
+**Cookie:**
+```
+jwt=<your_token>
+```
 
 **Response:**
 ```json
