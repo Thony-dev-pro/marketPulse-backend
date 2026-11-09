@@ -132,3 +132,22 @@ jwt=<your_token>
   }
 ]
 ```
+
+### Get all categories
+
+`GET /categories`
+
+**Cookie:**
+```
+jwt=<your_token>
+```
+
+**Response:**
+```json
+[
+  {
+    "id": 1,
+    "name": "Category name"
+  }
+]
+```

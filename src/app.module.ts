@@ -9,6 +9,7 @@ import { AppController } from './app.controller.ts';
 import { AppService } from './app.service.ts';
 import { User } from './users/entities/user.entity.ts';
 import { ProductsModule } from './products/products.module.ts';
+import { CategoriesModule } from './categories/categories.module.ts';
 import { Product } from './products/entities/product.entity.js';
 import { Category } from './categories/entities/category.entity.js';
 import { JwtStrategy } from './auth/strategies/jwt.strategy.ts';
@@ -51,6 +52,7 @@ function parseExpiresIn(exp: string): number {
     PassportModule,
     AuthModule,
     ProductsModule,
+    CategoriesModule,
   ],
   controllers: [AppController],
   providers: [AppService, JwtStrategy, JwtAuthGuard],
