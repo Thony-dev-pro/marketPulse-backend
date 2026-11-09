@@ -17,4 +17,15 @@ export class ProductsService {
       },
     });
   }
+
+  async create(name: string, category_id: number, description: string, unit: string, status: number): Promise<Product> {
+    const product = this.productsRepository.create({
+      name,
+      category_id,
+      description,
+      unit,
+      status,
+    });
+    return await this.productsRepository.save(product);
+  }
 }
