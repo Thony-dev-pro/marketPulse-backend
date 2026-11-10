@@ -211,6 +211,38 @@ jwt=<your_token>
 }
 ```
 
+### Update a product
+
+`PATCH /products/:id`
+
+**Cookie:**
+```
+jwt=<your_token>
+```
+
+**Body:**
+```json
+{
+  "name": "Product name",
+  "category_id": 1,
+  "description": "Product description",
+  "unit": "kg",
+  "status": 1
+}
+```
+
+**Response:**
+```json
+{
+  "id": 1,
+  "name": "Product name",
+  "category_id": 1,
+  "description": "Product description",
+  "unit": "kg",
+  "status": 1
+}
+```
+
 ### Desactivate a product
 
 `PATCH /products/:id/desactivate`

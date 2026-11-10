@@ -44,4 +44,15 @@ export class ProductsService {
       },
     });
   }
+
+  async update(id: number, name: string, category_id: number, description: string, unit: string, status: number): Promise<Product | null> {
+    await this.productsRepository.update(id, {
+      name,
+      category_id,
+      description,
+      unit,
+      status,
+    });
+    return await this.productsRepository.findOne({ where: { id } });
+  }
 }

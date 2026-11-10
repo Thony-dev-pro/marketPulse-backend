@@ -24,6 +24,12 @@ export class ProductsController {
     return this.productsService.create(name, category_id, description, unit, status);
   }
 
+  @Patch(':id')
+  @UseGuards(JwtAuthGuard)
+  update(@Param('id') id: number, @Body('name') name: string, @Body('category_id') category_id: number, @Body('description') description: string, @Body('unit') unit: string, @Body('status') status: number) {
+    return this.productsService.update(id, name, category_id, description, unit, status);
+  }
+
   @Patch(':id/desactivate')
   @UseGuards(JwtAuthGuard)
   desactivate(@Param('id') id: number) {
