@@ -18,6 +18,12 @@ export class ProductsController {
     return this.productsService.findByName(name);
   }
 
+  @Get('category/:id')
+  @UseGuards(JwtAuthGuard)
+  findByCategoryId(@Param('id') category_id: number) {
+    return this.productsService.findByCategoryId(category_id);
+  }
+
   @Post()
   @UseGuards(JwtAuthGuard)
   create(@Body('name') name: string, @Body('category_id') category_id: number, @Body('description') description: string, @Body('unit') unit: string, @Body('status') status: number) {

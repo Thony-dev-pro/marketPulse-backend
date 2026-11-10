@@ -6,14 +6,25 @@ meta {
 
 patch {
   url: http://localhost:3099/products/:id
-  body: none
+  body: json
   auth: inherit
 }
 
 params:path {
-  id: 
+  id: 2
+}
+
+body:json {
+  {
+    "name": "Wireless Headphones",
+    "category_id": 1,
+    "description": "Product description",
+    "unit": "kg",
+    "status": 1
+  }
 }
 
 settings {
   encodeUrl: true
+  timeout: 0
 }

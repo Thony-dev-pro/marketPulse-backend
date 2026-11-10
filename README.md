@@ -179,6 +179,33 @@ jwt=<your_token>
 ]
 ```
 
+### Get products by category
+
+`GET /products/category/:id`
+
+**Cookie:**
+```
+jwt=<your_token>
+```
+
+**Response:**
+```json
+[
+  {
+    "id": 1,
+    "name": "Product name",
+    "category_id": 1,
+    "description": "Product description",
+    "unit": "kg",
+    "status": 1,
+    "category": {
+      "id": 1,
+      "name": "Category name"
+    }
+  }
+]
+```
+
 ### Create a new product
 
 `POST /products`

@@ -55,4 +55,15 @@ export class ProductsService {
     });
     return await this.productsRepository.findOne({ where: { id } });
   }
+
+  async findByCategoryId(category_id: number): Promise<Product[]> {
+    return await this.productsRepository.find({
+      where: {
+        category_id,
+      },
+      relations: {
+        category: true,
+      },
+    });
+  }
 }
