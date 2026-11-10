@@ -183,3 +183,19 @@ jwt=<your_token>
   "status": 1
 }
 ```
+
+### Desactivate a product
+
+`PATCH /products/:id/desactivate`
+
+**Cookie:**
+```
+jwt=<your_token>
+```
+
+**Response:**
+```json
+{
+  "affected": 1
+}src/products/products.service.ts
+```

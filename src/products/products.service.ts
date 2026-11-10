@@ -2,6 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { Product } from './entities/product.entity.js';
+import { PRODUCT_STATUS } from '../common/constants/product-status.constant.js';
 
 @Injectable()
 export class ProductsService {
@@ -27,5 +28,9 @@ export class ProductsService {
       status,
     });
     return await this.productsRepository.save(product);
+  }
+
+  async desactivateProduct(id: number): Promise<void> {
+    await this.productsRepository.update(id, { status: PRODUCT_STATUS.INACTIVE });
   }
 }

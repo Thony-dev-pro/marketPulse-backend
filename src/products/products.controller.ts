@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.ts';
 import { ProductsService } from './products.service.ts';
 
@@ -16,5 +16,11 @@ export class ProductsController {
   @UseGuards(JwtAuthGuard)
   create(@Body('name') name: string, @Body('category_id') category_id: number, @Body('description') description: string, @Body('unit') unit: string, @Body('status') status: number) {
     return this.productsService.create(name, category_id, description, unit, status);
+  }
+
+  @Patch(':id/desactivate')
+  @UseGuards(JwtAuthGuard)
+  desactivate(@Param('id') id: number) {
+    return this.productsService.desactivateProduct(id);
   }
 }

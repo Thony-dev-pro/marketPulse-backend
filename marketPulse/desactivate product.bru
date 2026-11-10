@@ -1,0 +1,20 @@
+meta {
+  name: desactivate product
+  type: http
+  seq: 7
+}
+
+patch {
+  url: http://localhost:3099/products/:id/desactivate
+  body: none
+  auth: inherit
+}
+
+params:path {
+  id: 2
+}
+
+settings {
+  encodeUrl: true
+  timeout: 0
+}
