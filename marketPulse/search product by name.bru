@@ -1,0 +1,19 @@
+meta {
+  name: search product by name
+  type: http
+  seq: 8
+}
+
+get {
+  url: http://localhost:3099/products/search?name=<product_name>
+  body: none
+  auth: inherit
+}
+
+params:query {
+  name: <product_name>
+}
+
+settings {
+  encodeUrl: true
+}

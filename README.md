@@ -152,6 +152,33 @@ jwt=<your_token>
 ]
 ```
 
+### Search products by name
+
+`GET /products/search?name=<product_name>`
+
+**Cookie:**
+```
+jwt=<your_token>
+```
+
+**Response:**
+```json
+[
+  {
+    "id": 1,
+    "name": "Product name",
+    "category_id": 1,
+    "description": "Product description",
+    "unit": "kg",
+    "status": 1,
+    "category": {
+      "id": 1,
+      "name": "Category name"
+    }
+  }
+]
+```
+
 ### Create a new product
 
 `POST /products`
@@ -197,5 +224,5 @@ jwt=<your_token>
 ```json
 {
   "affected": 1
-}src/products/products.service.ts
+}
 ```

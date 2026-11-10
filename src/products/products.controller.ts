@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Body, Patch, Param, Query, UseGuards } from '@nestjs/common';
 import { JwtAuthGuard } from '../auth/guards/jwt-auth.guard.ts';
 import { ProductsService } from './products.service.ts';
 
@@ -10,6 +10,12 @@ export class ProductsController {
   @UseGuards(JwtAuthGuard)
   findAll() {
     return this.productsService.findAll();
+  }
+
+  @Get('search')
+  @UseGuards(JwtAuthGuard)
+  findByName(@Query('name') name: string) {
+    return this.productsService.findByName(name);
   }
 
   @Post()

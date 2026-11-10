@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
-import { Repository } from 'typeorm';
+import { Repository, Like } from 'typeorm';
 import { Product } from './entities/product.entity.js';
 import { PRODUCT_STATUS } from '../common/constants/product-status.constant.js';
 
@@ -32,5 +32,16 @@ export class ProductsService {
 
   async desactivateProduct(id: number): Promise<void> {
     await this.productsRepository.update(id, { status: PRODUCT_STATUS.INACTIVE });
+  }
+
+  async findByName(name: string): Promise<Product[]> {
+    return await this.productsRepository.find({
+      where: {
+        name: Like(`%${name}%`),
+      },
+      relations: {
+        category: true,
+      },
+    });
   }
 }
